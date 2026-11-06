@@ -1,386 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Leïla Van Keirsbilck</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Leïla Van Keirsbilck — PhD in Economics (UCLouvain). Econometrics of financial and production networks.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
 <style>
-  /* Layout: single reading column, max 68ch. Mono labels carry the working-paper
-     series references the way a RePEc listing sets them. */
   :root {
-    --bg: #fbfbfa;
-    --surface: #f3f3f1;
-    --fg: #16191c;
-    --fg-muted: #5c6468;
-    --fg-faint: #858d91;
-    --accent: #13555f;
-    --rule: #dcdcd8;
+    --bg: #ffffff;
+    --band: #f5f6f7;
+    --fg: #1b1f23;
+    --fg-muted: #555d66;
+    --fg-faint: #7b848d;
+    --link: #35618e;
+    --rule: #e1e4e7;
 
-    --font-display: "Newsreader", Georgia, "Times New Roman", serif;
-    --font-body: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --sans: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   }
 
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #101316;
-      --surface: #181c20;
-      --fg: #e6e9eb;
-      --fg-muted: #9aa3a8;
-      --fg-faint: #767f84;
-      --accent: #6cb3bd;
-      --rule: #272c31;
+    :root {
+      --bg: #14171a;
+      --band: #1b1f23;
+      --fg: #e8ebed;
+      --fg-muted: #a3abb2;
+      --fg-faint: #7e868d;
+      --link: #86b2dd;
+      --rule: #2a2f34;
       color-scheme: dark;
     }
   }
 
-  :root[data-theme="dark"] {
-    --bg: #101316;
-    --surface: #181c20;
-    --fg: #e6e9eb;
-    --fg-muted: #9aa3a8;
-    --fg-faint: #767f84;
-    --accent: #6cb3bd;
-    --rule: #272c31;
-    color-scheme: dark;
-  }
-
   * { box-sizing: border-box; }
 
+  html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
   body {
+    margin: 0;
     background: var(--bg);
     color: var(--fg);
-    font-family: var(--font-body);
-    font-size: 1.0625rem;
+    font-family: var(--sans);
+    font-size: 17px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
-  .page {
-    max-width: 44rem;
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 2px; }
+
+  .wrap {
+    max-width: 50rem;
     margin: 0 auto;
-    padding-left: max(16px, env(safe-area-inset-left, 0px));
-    padding-right: max(16px, env(safe-area-inset-right, 0px));
-    padding-block: 3.5rem 4.5rem;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
-  a {
-    color: var(--accent);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    text-decoration-thickness: 1px;
-    text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
-  }
-  a:hover { text-decoration-color: var(--accent); }
-  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
-
-  /* ---------- masthead ---------- */
-  header { margin-bottom: 2.75rem; }
-
-  h1 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: clamp(2.1rem, 6vw, 2.75rem);
-    line-height: 1.1;
-    letter-spacing: -0.015em;
-    margin: 0 0 0.5rem;
-    text-wrap: balance;
-  }
-
-  .standfirst {
-    font-family: var(--font-display);
-    font-size: 1.1875rem;
-    font-style: italic;
-    color: var(--fg-muted);
-    margin: 0 0 1.5rem;
-  }
-
-  .intro p { margin: 0 0 1rem; }
-  .intro p:last-child { margin-bottom: 0; }
-
-  .jobmarket {
-    margin-top: 1.5rem;
-    padding: 0.85rem 1rem;
-    background: var(--surface);
-    border-left: 2px solid var(--accent);
-    font-size: 0.9375rem;
-  }
-  .jobmarket p { margin: 0; }
-
-  /* ---------- sections ---------- */
-  section { margin-top: 3rem; }
-
-  h2 {
-    font-family: var(--font-mono);
-    font-weight: 500;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--fg-faint);
-    margin: 0 0 1.25rem;
-    padding-bottom: 0.5rem;
+  /* ---------- nav ---------- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: saturate(160%) blur(10px);
     border-bottom: 1px solid var(--rule);
   }
-
-  /* ---------- papers ---------- */
-  .paper { margin-bottom: 2.25rem; }
-  .paper:last-child { margin-bottom: 0; }
-
-  .paper h3 {
-    font-family: var(--font-display);
+  .nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-block: 0.7rem;
+  }
+  .nav .brand {
+    font-family: var(--serif);
+    font-size: 1.05rem;
     font-weight: 600;
-    font-size: 1.1875rem;
-    line-height: 1.3;
-    margin: 0 0 0.3rem;
-    text-wrap: balance;
+    color: var(--fg);
+    letter-spacing: -0.01em;
   }
-
-  .coauthors {
-    font-size: 0.9375rem;
-    color: var(--fg-muted);
-    margin: 0 0 0.6rem;
-  }
-
-  .abstract {
-    font-size: 0.9688rem;
-    color: var(--fg-muted);
-    margin: 0 0 0.7rem;
-  }
-
-  .refs {
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
-    line-height: 1.7;
-    color: var(--fg-faint);
-    font-variant-numeric: tabular-nums;
+  .nav ul {
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
     margin: 0;
-  }
-  .refs a { color: var(--accent); }
-  .refs .sep { color: var(--rule); padding: 0 0.3rem; }
-
-  /* ---------- lists ---------- */
-  .stack { display: flex; flex-direction: column; gap: 1.25rem; }
-
-  .entry { display: flex; flex-direction: column; gap: 0.15rem; }
-
-  .entry .what {
-    font-weight: 600;
-    font-size: 1rem;
-  }
-  .entry .where,
-  .entry .detail {
+    padding: 0;
     font-size: 0.9375rem;
-    color: var(--fg-muted);
+    flex-wrap: wrap;
   }
-  .entry .when {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.04em;
-    color: var(--fg-faint);
-    font-variant-numeric: tabular-nums;
+  .nav ul a { color: var(--fg-muted); }
+  .nav ul a:hover { color: var(--link); text-decoration: none; }
+
+  /* ---------- masthead ---------- */
+  .masthead { background: var(--band); border-bottom: 1px solid var(--rule); }
+  .masthead .wrap {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    padding-block: 2.75rem;
+    flex-wrap: wrap;
+  }
+  .avatar {
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: none;
+    background: var(--rule);
+  }
+  .ident { min-width: 0; flex: 1 1 18rem; }
+  .ident h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.9rem, 5vw, 2.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin: 0 0 0.35rem;
+  }
+  .ident .role { font-size: 1.0625rem; color: var(--fg-muted); margin: 0 0 0.15rem; }
+  .ident .affil { font-size: 1.0625rem; color: var(--fg-muted); margin: 0 0 0.9rem; }
+  .ident .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    font-size: 0.9375rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
-  ul.plain {
+  /* ---------- sections ---------- */
+  section { padding-block: 2.75rem; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: 0; }
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.25rem;
+  }
+
+  h3 {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+    margin: 2rem 0 0.85rem;
+  }
+  h3:first-of-type { margin-top: 0; }
+
+  p { margin: 0 0 1rem; }
+  p:last-child { margin-bottom: 0; }
+
+  ul.bullets { margin: 0; padding-left: 1.15rem; }
+  ul.bullets li { margin-bottom: 0.3rem; }
+
+  /* ---------- citations ---------- */
+  ol.cites, ul.cites {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
-    font-size: 0.9688rem;
+    gap: 1.15rem;
+  }
+  .cite { min-width: 0; }
+  .cite .t { font-weight: 600; }
+  .cite .meta { color: var(--fg-muted); }
+  .cite .abs {
+    font-size: 0.9375rem;
     color: var(--fg-muted);
+    margin: 0.35rem 0 0;
   }
-  ul.plain li { min-width: 0; }
-  ul.plain .venue { color: var(--fg); font-weight: 500; }
-
-  /* ---------- contact ---------- */
-  .contact {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem 1.5rem;
-    font-size: 0.9688rem;
-  }
-  .contact div { min-width: 0; }
-  .contact .label {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+  .cite .where {
+    font-size: 0.9375rem;
     color: var(--fg-faint);
-    display: block;
+    margin: 0.3rem 0 0;
   }
-  .contact .value { word-break: break-word; }
+  .me { font-weight: 700; }
+
+  /* ---------- teaching ---------- */
+  .items { display: flex; flex-direction: column; gap: 1.15rem; }
+  .item .head { font-weight: 600; }
+  .item .sub { color: var(--fg-muted); font-size: 0.9688rem; }
+  .item .yr { color: var(--fg-faint); font-size: 0.875rem; font-variant-numeric: tabular-nums; }
+
+  dl.contact { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 1.25rem; }
+  dl.contact dt { color: var(--fg-faint); font-size: 0.9375rem; }
+  dl.contact dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
 
   footer {
-    margin-top: 3.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--rule);
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
+    padding-block: 1.75rem 2.5rem;
     color: var(--fg-faint);
+    font-size: 0.875rem;
   }
 
-  @media (max-width: 480px) {
-    .page { padding-block: 2.5rem 3.5rem; }
-    section { margin-top: 2.5rem; }
+  @media (max-width: 560px) {
+    .masthead .wrap { gap: 1.25rem; padding-block: 2rem; }
+    .avatar { width: 104px; height: 104px; }
+    section { padding-block: 2.25rem; }
   }
 </style>
+</head>
+<body>
 
-<div class="page">
-
-  <header>
-    <h1>Leïla Van Keirsbilck</h1>
-    <p class="standfirst">Econometrics of financial and production networks</p>
-
-    <div class="intro">
-      <p>I am an economist and applied mathematician. I completed my PhD in economics at
-      UCLouvain (CORE/LIDAM) in September 2026, supervised by Francesca Monti and Sophie Béreau,
-      after training as an engineer in applied mathematics at the same university.</p>
-
-      <p>My research brings networks and graph theory into macroeconometrics: high-dimensional
-      Bayesian VARs structured by input–output linkages, and graph-based measures of systemic
-      risk in financial networks. Since 2022 I have also been responsible for the inflation
-      forecasts in <em>Perspectives économiques</em>, the quarterly macroeconomic outlook for the
-      Belgian economy published by UCLouvain's Economic Analysis Service.</p>
-    </div>
-
-    <div class="jobmarket">
-      <p>I am on the 2026–27 academic job market, and will be attending the European Job Market
-      in December 2026.</p>
-    </div>
-  </header>
-
-  <section>
-    <h2>Working papers</h2>
-
-    <article class="paper">
-      <h3>The Transmission of Shocks Across Sectors and the Dynamics of Sectoral Prices</h3>
-      <p class="coauthors">with Francesca Monti (UCLouvain, CEPR)</p>
-      <p class="abstract">This paper explores the dynamics of U.S. sectoral producer prices in a
-      large Bayesian vector autoregressive model, where information from the input–output matrix
-      is used to structure the long-run relationships between these time series.</p>
-      <p class="refs">
-        ECB Working Paper Series No. 3266 (2026)<span class="sep">·</span>CEPR Discussion Paper No. 20621<br>
-        <a href="https://dial.uclouvain.be/pr/boreal/object/boreal:302374">LIDAM Working Paper</a>
-      </p>
-    </article>
-
-    <article class="paper">
-      <h3>Mapping and Sampling Impacts on Centrality Measures' Ability to Explain Financial
-      Institutions' Losses in Crisis Periods</h3>
-      <p class="coauthors">with Sophie Béreau (UNamur) and Marco Saerens (UCLouvain)</p>
-      <p class="abstract">This paper tests whether changes in the network mapping specification
-      and changes in the sampling affect the econometric relation between losses and the systemic
-      vulnerability of institutions, as measured by centrality.</p>
-      <p class="refs"><a href="papers/centrality-measures.pdf">PDF</a></p>
-    </article>
-  </section>
-
-  <section>
-    <h2>Work in progress</h2>
-
-    <article class="paper">
-      <h3>Import Tariffs and Sectoral Price Dynamics in an Input–Output BVAR for the United States</h3>
-      <p class="abstract">This project studies the impact of tariff shocks on U.S. sectoral producer
-      prices, using the input–output-informed long-run BVAR framework.</p>
-      <p class="refs">Draft available on request</p>
-    </article>
-  </section>
-
-  <section>
-    <h2>Policy and forecasting</h2>
-    <div class="entry">
-      <span class="when">March 2022 — present</span>
-      <span class="what">Contributor, <em>Perspectives économiques</em>, Regards économiques</span>
-      <span class="where">Economic Analysis Service (SAE), UCLouvain</span>
-      <span class="detail">Quarterly macroeconomic outlook for the Belgian economy. Responsible for
-      the inflation forecasts (seasonal ARIMA models) and for thematic analyses, including on the
-      Chinese economy.</span>
-    </div>
-  </section>
-
-  <section>
-    <h2>Teaching</h2>
-    <div class="stack">
-      <div class="entry">
-        <span class="when">Sept — Dec 2026</span>
-        <span class="what">Lecturer, Emerging Markets</span>
-        <span class="where">EDHEC Business School, Lille</span>
-      </div>
-      <div class="entry">
-        <span class="when">2020 — 2026</span>
-        <span class="what">Teaching Assistant in Economics</span>
-        <span class="where">UCLouvain, Louvain-la-Neuve</span>
-        <span class="detail">Mathematics for economists (BA), Macroeconomics (BA), Applied
-        macroeconomics (MA, taught in MATLAB and Python).</span>
-      </div>
-      <div class="entry">
-        <span class="when">Nov 2018 — Jan 2019</span>
-        <span class="what">Mathematics Teacher</span>
-        <span class="where">Institut Maris Stella, Brussels — secondary level</span>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Presentations</h2>
-    <ul class="plain">
-      <li><span class="venue">European Economic Association</span> 2025, Bordeaux</li>
-      <li><span class="venue">International Association for Applied Econometrics</span> 2025, Turin</li>
-      <li><span class="venue">HEC Liège Young Researchers Conference in Economics</span> 2025, Liège</li>
-      <li><span class="venue">Workshop on Complex Systems, Networks and Finance</span> 2023, Nancy</li>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Leïla Van Keirsbilck</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="cv.pdf">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-  </section>
+  </div>
+</nav>
 
-  <section>
-    <h2>Other</h2>
-    <div class="stack">
-      <div class="entry">
-        <span class="when">Sept — Dec 2023</span>
-        <span class="what">Visiting PhD Researcher, Economics and Research Department</span>
-        <span class="where">National Bank of Belgium, Brussels</span>
-      </div>
-      <div class="entry">
-        <span class="what">Referee</span>
-        <span class="where">International Journal of Forecasting · B.E. Journal of Macroeconomics</span>
-      </div>
-      <div class="entry">
-        <span class="what">Programming</span>
-        <span class="where">R, MATLAB, Python, Dynare, LaTeX</span>
-      </div>
-      <div class="entry">
-        <span class="what">Languages</span>
-        <span class="where">French (native), English (fluent), Dutch (intermediate)</span>
+<header class="masthead" id="top">
+  <div class="wrap">
+    <img class="avatar" src="photo.jpg" alt="Leïla Van Keirsbilck" onerror="this.remove()">
+    <div class="ident">
+      <h1>Leïla Van Keirsbilck</h1>
+      <p class="role">PhD in Economics &middot; MSc in Mathematical Engineering</p>
+      <p class="affil">UCLouvain (CORE/LIDAM)</p>
+      <ul class="links">
+        <li><a href="cv.pdf">CV</a></li>
+        <li><a href="https://orcid.org/0009-0005-1807-4459">ORCID</a></li>
+        <li><a href="https://be.linkedin.com/in/leila-van-keirsbilck-a2a07a87">LinkedIn</a></li>
+        <li><a href="https://github.com/leilavankeirsbilck">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <p>I am an economist and applied mathematician. I completed my PhD in economics at UCLouvain
+    (CORE/LIDAM) in September 2026, supervised by Francesca Monti and Sophie Béreau, after training
+    as an engineer in applied mathematics at the same university.</p>
+
+    <p>My research brings networks and graph theory into macroeconometrics: high-dimensional
+    Bayesian VARs structured by input–output linkages, and graph-based measures of systemic risk in
+    financial networks. Since 2022 I have also been responsible for the inflation forecasts in
+    <em>Perspectives économiques</em>, the quarterly macroeconomic outlook for the Belgian economy
+    published by UCLouvain's Economic Analysis Service.</p>
+
+    <p>I am on the 2026–27 academic job market and will attend the European Job Market in
+    December 2026.</p>
+
+    <h3>Interests</h3>
+    <ul class="bullets">
+      <li>Econometrics of financial and production networks</li>
+      <li>High-dimensional time series and Bayesian methods</li>
+      <li>Sectoral price dynamics and input–output transmission</li>
+      <li>Systemic risk and centrality measures</li>
+      <li>Macroeconomic forecasting</li>
+    </ul>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <h2>Research</h2>
+
+    <h3>Working papers</h3>
+    <ul class="cites">
+      <li class="cite">
+        <span class="t">The Transmission of Shocks Across Sectors and the Dynamics of Sectoral Prices</span><br>
+        <span class="meta">with Francesca Monti (UCLouvain, CEPR)</span>
+        <p class="abs">This paper explores the dynamics of U.S. sectoral producer prices in a large
+        Bayesian vector autoregressive model, where information from the input–output matrix is used
+        to structure the long-run relationships between these time series.</p>
+        <p class="where">ECB Working Paper Series No. 3266 (2026) · CEPR Discussion Paper No. 20621 ·
+        <a href="https://dial.uclouvain.be/pr/boreal/object/boreal:302374">LIDAM Working Paper</a></p>
+      </li>
+      <li class="cite">
+        <span class="t">Mapping and Sampling Impacts on Centrality Measures' Ability to Explain
+        Financial Institutions' Losses in Crisis Periods</span><br>
+        <span class="meta">with Sophie Béreau (UNamur) and Marco Saerens (UCLouvain)</span>
+        <p class="abs">This paper tests whether changes in the network mapping specification and
+        changes in the sampling affect the econometric relation between losses and the systemic
+        vulnerability of institutions, as measured by centrality.</p>
+        <p class="where"><a href="papers/centrality-measures.pdf">PDF</a></p>
+      </li>
+    </ul>
+
+    <h3>Work in progress</h3>
+    <ul class="cites">
+      <li class="cite">
+        <span class="t">Import Tariffs and Sectoral Price Dynamics in an Input–Output BVAR for the
+        United States</span>
+        <p class="abs">This project studies the impact of tariff shocks on U.S. sectoral producer
+        prices, using the input–output-informed long-run BVAR framework.</p>
+        <p class="where">Draft available on request</p>
+      </li>
+    </ul>
+
+    <h3>Policy and forecasting</h3>
+    <ul class="cites">
+      <li class="cite">
+        <span class="t">Contributor, <em>Perspectives économiques</em></span><br>
+        <span class="meta">Regards économiques, Economic Analysis Service (SAE), UCLouvain · since March 2022</span>
+        <p class="abs">Quarterly macroeconomic outlook for the Belgian economy. Responsible for the
+        inflation forecasts (seasonal ARIMA models) and for thematic analyses, including on the
+        Chinese economy.</p>
+      </li>
+    </ul>
+
+    <h3>Other publications</h3>
+    <ul class="cites">
+      <li class="cite">
+        <span class="meta"><span class="me">Van Keirsbilck, L.</span> and O. Malay (2019).
+        <span class="t">Libéralisation du rail : qui va gagner, qui va perdre ?</span>
+        <em>IRES Discussion Paper</em> 2019-3, UCLouvain.</span>
+      </li>
+      <li class="cite">
+        <span class="meta">Bauraind, B. and <span class="me">L. Van Keirsbilck</span> (2019).
+        <span class="t">Les multinationales en Belgique : contre-rapport annuel.</span>
+        <em>Gresea Échos</em>, no. 99.</span>
+      </li>
+    </ul>
+
+    <h3>Presentations</h3>
+    <ul class="bullets">
+      <li>European Economic Association, 2025, Bordeaux</li>
+      <li>International Association for Applied Econometrics, 2025, Turin</li>
+      <li>HEC Liège Young Researchers Conference in Economics, 2025, Liège</li>
+      <li>Workshop on Complex Systems, Networks and Finance, 2023, Nancy</li>
+    </ul>
+
+    <h3>Refereeing</h3>
+    <p><em>International Journal of Forecasting</em> · <em>B.E. Journal of Macroeconomics</em></p>
+  </div>
+</section>
+
+<section id="teaching">
+  <div class="wrap">
+    <h2>Teaching</h2>
+
+    <h3>Lecturer</h3>
+    <div class="items">
+      <div class="item">
+        <div class="head">Emerging Markets</div>
+        <div class="sub">EDHEC Business School, Lille</div>
+        <div class="yr">September – December 2026</div>
       </div>
     </div>
-  </section>
 
-  <section>
+    <h3>Teaching assistant</h3>
+    <div class="items">
+      <div class="item">
+        <div class="head">Mathematics for Economists · Macroeconomics · Applied Macroeconomics</div>
+        <div class="sub">UCLouvain, Louvain-la-Neuve. Applied macroeconomics taught in MATLAB and
+        Python. Six years of undergraduate and graduate tutorials, including recorded worked
+        solutions and question-and-answer sessions.</div>
+        <div class="yr">2020 – 2026</div>
+      </div>
+    </div>
+
+    <h3>Secondary school</h3>
+    <div class="items">
+      <div class="item">
+        <div class="head">Mathematics</div>
+        <div class="sub">Institut Maris Stella, Brussels</div>
+        <div class="yr">November 2018 – January 2019</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
     <h2>Contact</h2>
-    <div class="contact">
-      <div>
-        <span class="label">Email</span>
-        <span class="value">leila.vankeirsbilck@uclouvain.be</span>
-      </div>
-      <div>
-        <span class="label">Curriculum vitae</span>
-        <span class="value"><a href="cv.pdf">CV (PDF)</a></span>
-      </div>
-      <div>
-        <span class="label">ORCID</span>
-        <span class="value"><a href="https://orcid.org/0009-0005-1807-4459">0009-0005-1807-4459</a></span>
-      </div>
-      <div>
-        <span class="label">LinkedIn</span>
-        <span class="value"><a href="https://be.linkedin.com/in/leila-van-keirsbilck-a2a07a87">leila-van-keirsbilck</a></span>
-      </div>
-      <div>
-        <span class="label">Based in</span>
-        <span class="value">Brussels, Belgium</span>
-      </div>
-    </div>
-  </section>
+    <dl class="contact">
+      <dt>Email</dt>
+      <dd>leila.vankeirsbilck@uclouvain.be</dd>
+      <dt>Location</dt>
+      <dd>Brussels, Belgium</dd>
+      <dt>ORCID</dt>
+      <dd><a href="https://orcid.org/0009-0005-1807-4459">0009-0005-1807-4459</a></dd>
+      <dt>LinkedIn</dt>
+      <dd><a href="https://be.linkedin.com/in/leila-van-keirsbilck-a2a07a87">leila-van-keirsbilck</a></dd>
+    </dl>
+  </div>
+</section>
 
-  <footer>Last updated November 2026</footer>
+</main>
 
-</div>
+<footer>
+  <div class="wrap">© 2026 Leïla Van Keirsbilck · Last updated November 2026</div>
+</footer>
+
+</body>
+</html>
